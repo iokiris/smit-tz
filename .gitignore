@@ -1,0 +1,36 @@
+tests
+# Python
+__pycache__/
+__pycache__
+*.pyc
+*.pyo
+*.py[cod]
+*$py.class
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+# C extensions
+*.so
+# Virtual environments
+.env/
+.venv/
+env/
+venv/
+ENV/
+# FastAPI specific files
+*.log
+# Pip dependency files
+*.egg-info/
+*.eggs/
+*.pkl
+# Pytest
+.cache/
+.tox/
+.pytest_cache/
+# IDEs
+.vscode/
+.idea/
+# OS files
+.DS_Store
+Thumbs.db
+# Docker
+docker-compose.override.yml
