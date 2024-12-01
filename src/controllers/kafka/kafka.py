@@ -6,4 +6,8 @@ producer = AsyncKafkaProducer(brokers=KAFKA_IP, topic=KAFKA_LOGS_TOPIC)
 
 
 async def send_log(event: str, category: str = "system_logs"):
-    attemp = await producer.send_event(category, event)
+    attempt = await producer.send_event(category, event)
+
+
+async def stop_producer():
+    await producer.stop()

@@ -17,13 +17,21 @@ async def update_costs(tariffs: CargoCost = Depends()):
     updated = 0
     for date, cargos in tariffs.data.items():
         for cargo in cargos:
-            await database.upsert_cargo(context.db.session, Cargo(
+            await database.upsert_cargo(Cargo(
                 cargo_type=cargo.cargo_type,
                 rate=cargo.rate,
                 datetime=date
             ))
             updated += 1
     return JSONResponse(f"{updated} cargos updated")
+
+
+@router.delete("/update-costs")
+async def delete_costs(date: datetime.date, cargo_type: str):
+    await database.delete_cargo(date, cargo_type)
+    return JSONResponse({
+        "message": f"{cargo_type} cargo from {date} successfully deleted"
+    })
 
 
 @router.get("/calculate-cost")
